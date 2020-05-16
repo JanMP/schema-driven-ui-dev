@@ -1,5 +1,6 @@
-import React from 'react'
 import {Meteor} from 'meteor/meteor'
+import '/imports/api/api'
+import React from 'react'
 import {render} from 'react-dom'
 import {App} from '/imports/ui/App'
 
