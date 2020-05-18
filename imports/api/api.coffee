@@ -1,1 +1,1 @@
-import '.AutoTableTest'
+import './AutoTableTest'

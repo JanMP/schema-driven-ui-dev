@@ -2,7 +2,9 @@ import {Meteor} from 'meteor/meteor'
 import {Mongo} from 'meteor/mongo'
 import {ValidatedMethod} from 'meteor/mdg:validated-method'
 import SimpleSchema from 'simpl-schema'
-import createAutoDataTableBackend from 'meteor/janmp:schema-driven-ui'
+import {createAutoDataTableBackend} from 'meteor/janmp:schema-driven-ui'
+
+SimpleSchema.extendOptions ['AutoTable', 'uniforms']
 
 export Test = new Mongo.Collection 'test'
 

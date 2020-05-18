@@ -1,6 +1,5 @@
 import React from 'react'
-import {fnord} from 'meteor/janmp:schema-driven-ui'
-
+import AutoTableTest from './AutoTableTest'
 
 export App = ->
-  <h1>fnord</h1>
+  <AutoTableTest/>
