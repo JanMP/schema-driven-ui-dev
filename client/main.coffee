@@ -1,7 +1,8 @@
 import {Meteor} from 'meteor/meteor'
-import '/imports/api/api'
 import React from 'react'
 import {render} from 'react-dom'
+import 'semantic-ui-css/semantic.min.css'
+import '/imports/api/api'
 import {App} from '/imports/ui/App'
 
 Meteor.startup ->

@@ -34,8 +34,8 @@ pipeline = [
 ]
 
 export props = createAutoDataTableBackend
-  viewTableRole: 'user'
-  editRole: 'user'
+  # viewTableRole: 'user'
+  # editRole: 'user'
   sourceName: 'testList'
   sourceSchema: testSchema
   listSchema: listSchema
