@@ -1,5 +1,7 @@
 import React from 'react'
-import AutoTableTest from './AutoTableTest'
+import {AppRouter} from 'meteor/janmp:schema-driven-ui'
+import menuDefinitions from './menuDefinitions'
+
 
 export App = ->
-  <AutoTableTest/>
+  <AppRouter menuDefinitions={menuDefinitions}/>
