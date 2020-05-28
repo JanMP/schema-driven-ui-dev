@@ -20,3 +20,8 @@ static-html             # Define static page content in .html files
 react-meteor-data       # React higher-order component for reactively tracking Meteor data
 janmp:schema-driven-ui
 coffeescript@2.4.1
+accounts-password
+accounts-base
+coagmano:stylus
+insecure
+peerlibrary:reactive-publish
