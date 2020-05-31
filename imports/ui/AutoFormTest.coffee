@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import SimpleSchema from 'simpl-schema'
 import AutoForm from 'uniforms-semantic/AutoForm'
-import {Container} from 'semantic-ui-react'
+import {Container, Segment} from 'semantic-ui-react'
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2'
 
 schema = new SimpleSchema
-  a: String
-  b: Number
+  Name: String
+  Alter: Number
+  Hobbies: [String]
 
 new SimpleSchema2Bridge schema
 
@@ -15,11 +16,17 @@ export default AutoFormTest = ->
   [model, setModel] = useState {}
 
   <Container>
-    <h1>Hey!</h1>
-    <pre>{JSON.stringify model, null, 2}</pre>
+  
+    <h1>AutoFormTest</h1>
     <AutoForm
       schema={schema}
       model={model}
       onSubmit={setModel}
     />
+
+    <h3>model:</h3>
+    <Segment>
+      <pre>{JSON.stringify model, null, 2}</pre>
+    </Segment>
+  
   </Container>

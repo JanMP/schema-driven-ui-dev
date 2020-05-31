@@ -1,5 +1,6 @@
 import AutoTableTest from './AutoTableTest'
 import AutoFormTest from './AutoFormTest'
+import QueryEditorTest from './QueryEditorTest'
 
 export default menuDefinitions = [
   label: 'AutoTableTest'
@@ -11,4 +12,8 @@ export default menuDefinitions = [
   label: 'AutoFormTest'
   path: '/auto-form-test'
   component: AutoFormTest
+,
+  label: 'QueryEditorTest'
+  path: '/query-editor-test'
+  component: QueryEditorTest
 ]
