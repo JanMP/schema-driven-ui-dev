@@ -17,7 +17,6 @@ testSchema = new SimpleSchema
   a: Number
   b: Number
 
-
 listSchema = new SimpleSchema
   _id:
     type: String
@@ -46,7 +45,7 @@ export props = createAutoDataTableBackend
   pipelineMiddle: pipeline
   canEdit: true
   canAdd: true
-  canDelete: true
-  canSearch: true
+  canDelete: false
+  canSearch: false
  
 
