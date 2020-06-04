@@ -1,7 +1,52 @@
 body
   font-family: sans-serif
-  background-color: silver
 
-.content-container
-  padding: 1rem
+.desktop-container
+  min-height: 100vh
+  display: flex
+  flex-grow: 1
+  flex-direction: column
+  justify-content: flex-start 
+  .content-container
+    display: flex
+    flex-direction: column
+    flex-grow: 2
+    padding: 1rem
+    background-image: linear-gradient(silver, grey)
+  .footer-container
+    background-color: grey
+    padding .5rem
+    text-align: center
+
+.query-editor
+  background-image:linear-gradient(white, lavender) !important
+  .query-block
+    padding: 4px 0 0px 4px
+    margin-bottom: 4px
+    border-radius: 4px
+    .inline
+      margin-bottom: -12px
+    .block-header
+      padding: 4px
+      margin: -4px 0 4px -4px
+      border-radius: 0 4px 4px 0
+    &.and
+      border-left: 12px solid orange !important
+      >.block-header
+        background-color: orange
+    &.or
+      border-left: 12px solid green !important
+      >.block-header
+        background-color: green
+    &.nor
+      border-left: 12px solid red !important
+      >.block-header
+        background-color: red
+    &.folder
+      border: 12px solid grey
+      border-top 0
+      padding-right: 4px
+      >.block-header
+        margin-right: -8px
+        background-color: grey
 
