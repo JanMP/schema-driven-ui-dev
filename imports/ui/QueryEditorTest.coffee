@@ -3,9 +3,6 @@ import {Container, Segment} from 'semantic-ui-react'
 import {QueryEditor, queryUiObjectToQuery} from 'meteor/janmp:schema-driven-ui'
 import SimpleSchema from 'simpl-schema'
 
-getList = (props) ->
-  console.log props
-
 ListComponent = ->
   <span>ListComponent from Schema</span>
 
@@ -19,13 +16,27 @@ schema = new SimpleSchema
         allowedValues: ['Liste 1', 'Liste 2']
   c:
     type: String
-    allowedValues: ['Eins', 'Zwei', 'Drei']
     QueryEditor:
       inListField:
-        type: Number
+        type: String
+        allowedValues: ['A', 'B', 'C']
   subDoc: Object
   'subDoc.x': Number
   'subDoc.y': Number
+
+listen =
+  b:
+    'Liste 1': [1,2,3]
+    'Liste 2': [4,5,6]
+  c:
+    A: ['Auto', 'Ameise', 'Amerika']
+    B: ['Baumeister', 'Bob', 'Banana']
+    C: ['Chaos', 'Cannabis', 'Chilli']
+
+getList = ({subject,predicate,object}) ->
+  console.log {subject,predicate,object}
+  listen[subject]?[object.value] ? []
+
 
 export default QueryEditorTest = ->
 
@@ -34,7 +45,7 @@ export default QueryEditorTest = ->
 
   useEffect ->
     if queryUiObject?
-      setQuery queryUiObjectToQuery {queryUiObject}
+      setQuery queryUiObjectToQuery {queryUiObject, getList}
       # console.log queryUiObject
   , [queryUiObject]
 
