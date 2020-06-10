@@ -1,6 +1,7 @@
 import AutoTableTest from './AutoTableTest'
 import AutoFormTest from './AutoFormTest'
 import QueryEditorTest from './QueryEditorTest'
+import GridLayoutTest from './GridLayoutTest'
 
 export default menuDefinitions = [
   label: 'AutoTableTest'
@@ -16,4 +17,8 @@ export default menuDefinitions = [
   label: 'QueryEditorTest'
   path: '/query-editor-test'
   component: QueryEditorTest
+,
+  label: 'GridLayoutTest'
+  path: '/grid-layout-test'
+  component: GridLayoutTest
 ]
