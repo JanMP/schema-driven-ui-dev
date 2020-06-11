@@ -3,21 +3,30 @@ import GridLayout, {WidthProvider} from 'react-grid-layout'
 import {Segment} from 'semantic-ui-react'
 import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
+import './react-grid.custom.styl'
 import AutoFormTest from './AutoFormTest'
 import AutoTableTest from './AutoTableTest'
+import QueryEditorTest from './QueryEditorTest'
 
-WindowContent = ({text}) ->
-  <Segment style={height: '100%'}>
-    <h1>{text}</h1>
-  </Segment>
+WindowContainer = ({children, title, key}) ->
+  <div key="a">
+      <div className="window">
+        <div className="window-header">AutoFormTest</div>
+        <div className="window-content">
+          {children}
+        </div>
+      </div>
+    </div>
+
   
 Grid = WidthProvider GridLayout
 
-export default GridLayoutTest = ->
+export default GridLayoutTest = ({children})->
 
   defaultLayout = [
-    {i: 'a', x: 1, y: 2, w: 2, h: 2}
-    {i: 'b', x: 5, y: 2, w: 3, h: 3}
+    {i: 'a', x: 0, y:0, w: 2, h: 1}
+    {i: 'b', x: 0, y: 2, w: 2, h: 1}
+    {i: 'c', x: 0, y: 4, w: 2, h: 1}
   ]
 
   [layout, setLayout] = useState defaultLayout
@@ -44,6 +53,15 @@ export default GridLayoutTest = ->
         <div className="window-header">AutoTableTest</div>
         <div className="window-content">
           <AutoTableTest/>
+        </div>
+      </div>
+    </div>
+
+    <div key="c">
+      <div className="window">
+        <div className="window-header">AutoTableTest</div>
+        <div className="window-content">
+          <QueryEditorTest/>
         </div>
       </div>
     </div>

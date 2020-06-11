@@ -50,19 +50,17 @@ export default QueryEditorTest = ->
   , [queryUiObject]
 
 
-  <Container>
-    <Segment>
-      <QueryEditor
-        rule={queryUiObject}
-        schema={schema}
-        showRule={true}
-        onChange={setQueryUiObject}
-      />
-    </Segment>
+  <>
+    <QueryEditor
+      rule={queryUiObject}
+      schema={schema}
+      showRule={true}
+      onChange={setQueryUiObject}
+    />
     <Segment>
       <pre>{JSON.stringify queryUiObject, null, 2}</pre>
     </Segment>
     <Segment>
       <pre>{JSON.stringify query, null, 2}</pre>
     </Segment>
-  </Container>
+  </>
