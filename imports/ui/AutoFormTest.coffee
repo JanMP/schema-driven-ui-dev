@@ -15,9 +15,7 @@ export default AutoFormTest = ->
   
   [model, setModel] = useState {}
 
-  <Container>
-  
-    <h1>AutoFormTest</h1>
+  <>
     <AutoForm
       schema={schema}
       model={model}
@@ -28,5 +26,4 @@ export default AutoFormTest = ->
     <Segment>
       <pre>{JSON.stringify model, null, 2}</pre>
     </Segment>
-  
-  </Container>
+  </>

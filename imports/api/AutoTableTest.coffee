@@ -45,7 +45,7 @@ export props = createAutoDataTableBackend
   pipelineMiddle: pipeline
   canEdit: true
   canAdd: true
-  canDelete: false
-  canSearch: false
+  canDelete: true
+  canSearch: true
  
 
