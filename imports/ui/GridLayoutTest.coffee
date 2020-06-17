@@ -6,6 +6,7 @@ import {WindowGrid, WindowContainer} from 'meteor/janmp:schema-driven-ui'
 import AutoFormTest from './AutoFormTest'
 import AutoTableTest from './AutoTableTest'
 import QueryEditorTest from './QueryEditorTest'
+import MarkDownEditorTest from './MarkDownEditorTest'
 
 export default GridLayoutTest = ->
   <WindowGrid name="TestGrid">
@@ -20,5 +21,8 @@ export default GridLayoutTest = ->
     </WindowContainer>
     <WindowContainer title="QueryEditorTest2">
       <QueryEditorTest/>
+    </WindowContainer>
+    <WindowContainer title="MarkDownEditorTest">
+      <MarkDownEditorTest/>
     </WindowContainer>
   </WindowGrid>
