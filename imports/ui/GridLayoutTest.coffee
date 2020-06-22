@@ -22,7 +22,7 @@ export default GridLayoutTest = ->
     <WindowContainer title="QueryEditorTest2">
       <QueryEditorTest/>
     </WindowContainer>
-    <WindowContainer title="MarkDownEditorTest">
+    <WindowContainer title="MarkDownEditorTest" noOverflow>
       <MarkDownEditorTest/>
     </WindowContainer>
   </WindowGrid>
