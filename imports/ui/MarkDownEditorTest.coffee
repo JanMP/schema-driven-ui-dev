@@ -5,6 +5,10 @@ import {useTracker} from 'meteor/react-meteor-data'
 import {meteorApply} from 'meteor/janmp:schema-driven-ui'
 import _ from 'lodash'
 
+
+# toolbar =
+#   <div style={flex: "1 1 30px", padding: '3px'} ><button onClick={-> console.log 'fnord'}>fnord</button></div>
+
 export default MarkDownEditorTest = ->
 
   useTracker ->
@@ -19,8 +23,10 @@ export default MarkDownEditorTest = ->
       method: 'editor.set'
       data: value: newValue
 
-  <MarkDownEditor
-    value={value}
-    onChange={setValue}
-    mayEdit={true}
-  />
+  <div style={height: '100%', display: 'flex', flexDirection: 'column'}>
+    <MarkDownEditor
+      value={value}
+      onChange={setValue}
+      mayEdit={true}
+    />
+  </div>
