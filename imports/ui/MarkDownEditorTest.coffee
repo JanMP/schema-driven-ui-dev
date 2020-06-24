@@ -1,9 +1,23 @@
-import React, {useState} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import {MarkDownEditor} from 'meteor/janmp:schema-driven-ui'
+import {Editor} from '../api/Editor'
+import {useTracker} from 'meteor/react-meteor-data'
+import {meteorApply} from 'meteor/janmp:schema-driven-ui'
+import _ from 'lodash'
 
 export default MarkDownEditorTest = ->
 
-  [value, setValue] = useState [1..10].map((n) -> "#{n}\n\n").join()
+  useTracker ->
+    handle = Meteor.subscribe 'editor'
+    not handle.ready()
+  , []
+
+  value = useTracker -> Editor.findOne()?.value ? 'kein Text'
+
+  setValue = (newValue) ->
+    meteorApply
+      method: 'editor.set'
+      data: value: newValue
 
   <MarkDownEditor
     value={value}
