@@ -7,6 +7,7 @@ import AutoFormTest from './AutoFormTest'
 import AutoTableTest from './AutoTableTest'
 import QueryEditorTest from './QueryEditorTest'
 import MarkDownEditorTest from './MarkDownEditorTest'
+import NewTableTest from './NewTableTest'
 
 export default GridLayoutTest = ->
   <WindowGrid name="TestGrid">
@@ -24,5 +25,8 @@ export default GridLayoutTest = ->
     </WindowContainer>
     <WindowContainer title="MarkDownEditorTest" noOverflow>
       <MarkDownEditorTest/>
+    </WindowContainer>
+    <WindowContainer title="NewTableTest" noOverflow>
+      <NewTableTest/>
     </WindowContainer>
   </WindowGrid>
