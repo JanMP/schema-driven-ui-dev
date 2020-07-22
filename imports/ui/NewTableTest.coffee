@@ -1,17 +1,40 @@
-import React from "react"
+import React, {useState, useEffect, useRef} from "react"
+import {useTracker} from 'meteor/react-meteor-data'
+import {TestCollection} from '/imports/api/TestCollection'
 import NewDataTable from "./NewDataTable.coffee"
-
-import faker from 'faker'
-import {loremIpsum} from 'lorem-ipsum'
-
 import _ from 'lodash'
 
-N = 10000
-rows = [1..N].map (n) ->
-  index: n
-  name: loremIpsum count: _.random 1, 20 #faker.name.findName()
-  description: loremIpsum count: _.random 1, 30
+resolve = ->
+reject = ->
 
 export default NewTableTest = ->
 
-  <NewDataTable rows={rows}/>
+  [skip, setSkip] = useState 0
+  [limit, setLimit] = useState 10
+
+  isLoading = useTracker ->
+    handle = Meteor.subscribe 'testCollection', {skip, limit}
+    not handle.ready()
+  , [skip, limit]
+
+  rows = useTracker -> TestCollection.find({},{skip, limit, sort: index: 1}).fetch()
+
+  # useEffect ->
+  #   console.log rows
+  #   return
+  # , [rows]
+
+  useEffect ->
+    console.log {isLoading}
+    if isLoading is false then resolve()
+  , [isLoading]
+
+  loadMoreRows = ({startIndex, stopIndex}) ->
+    if stopIndex >= limit
+      setLimit limit+10
+    new Promise (res, rej) ->
+      resolve = ->
+        res()
+      reject = rej
+
+  <NewDataTable rows={rows} totalRowCount={rows?.length+1} loadMoreRows={loadMoreRows}/>

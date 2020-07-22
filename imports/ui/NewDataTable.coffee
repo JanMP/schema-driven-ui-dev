@@ -1,13 +1,10 @@
 import React, {useEffect, useRef} from "react"
-import {Column, defaultTableRowRenderer, Table, CellMeasurer, CellMeasurerCache} from 'react-virtualized'
+import {
+  Column, defaultTableRowRenderer, Table, CellMeasurer, CellMeasurerCache,
+  InfiniteLoader
+} from 'react-virtualized'
 import useSize from '@react-hook/size'
 import _ from 'lodash'
-
-
-
-N = 10000
-dataKeys = ['name', 'description']
-
 
 
 cache = new CellMeasurerCache
@@ -16,6 +13,7 @@ cache = new CellMeasurerCache
   defaultHeight: 300
 
 cellRenderer = ({dataKey, parent, rowIndex, columnIndex, cellData, rowData}) ->
+  cache.clear {rowIndex, columnIndex}
   <CellMeasurer
     cache={cache}
     columnIndex={columnIndex}
@@ -30,48 +28,82 @@ cellRenderer = ({dataKey, parent, rowIndex, columnIndex, cellData, rowData}) ->
    </div>
   </CellMeasurer>
 
-export default NewDataTable = ({rows}) ->
+export default NewDataTable = ({rows, limit, totalRowCount, loadMoreRows}) ->
 
   contentContainerRef = useRef null
   [contentContainerWidth, contentContainerHeight] = useSize contentContainerRef
 
-  getRow = ({index}) -> result = rows[index]
-  
-  useEffect ->
+  tableRef = useRef null
+  oldRows = useRef null
+
+  forceUpdate = ->
+    console.log 'forceUpdate'
     cache.clearAll()
+    tableRef?.current?.forceUpdateGrid()
     return
-  , [contentContainerWidth, contentContainerHeight]
-  
+
+  useEffect forceUpdate, [contentContainerWidth, contentContainerHeight]
+
+  useEffect ->
+    start = new Date()
+    length = rows?.length ? 0
+    oldLength = oldRows?.current?.length ? 0
+    if length > oldLength
+      forceUpdate() unless _.isEqual rows?[0...oldLength], oldRows?.current
+    else
+      forceUpdate() unless _.isEqual rows, oldRows?.current
+    oldRows.current = rows
+    console.log (new Date()) - start
+    return
+  , [rows]
+
+
+  getRow = ({index}) -> rows[index] ? {}
+  isRowLoaded = ({index}) -> rows?[index]?
+  loadMoreRowsAndClearCache = ({startIndex, stopIndex}) ->
+    await loadMoreRows({startIndex, stopIndex})
 
   <div ref={contentContainerRef} style={height: '100%', width: '100%'}>
-    <Table
-      width={contentContainerWidth}
-      height={contentContainerHeight}
-      headerHeight={30}
-      rowHeight={cache.rowHeight}
-      rowCount={rows.length}
-      rowGetter={getRow}
+    <InfiniteLoader
+      isRowLoaded={isRowLoaded}
+      loadMoreRows={loadMoreRowsAndClearCache}
+      rowCount={totalRowCount}
     >
-      <Column
-        dataKey="index"
-        label="index"
-        width="100"
-        cellRenderer={cellRenderer}
-      />
-      <Column
-        dataKey="name"
-        label="name"
-        width={150}
-        flexGrow={1}
-        cellRenderer={cellRenderer}
-      />
-      <Column
-        dataKey="description"
-        label="description"
-        width={150}
-        flexGrow={1}
-        style={whiteSpace: 'normal'}
-        cellRenderer={cellRenderer}
-      />
-    </Table>
+    {({onRowsRendered, registerChild}) ->
+      registerChild tableRef
+      <Table
+        width={contentContainerWidth}
+        height={contentContainerHeight}
+        headerHeight={30}
+        rowHeight={cache.rowHeight}
+        rowCount={totalRowCount}
+        rowGetter={getRow}
+        onRowsRendered={onRowsRendered}
+        ref={tableRef}
+        overscanRowCount={1}
+      >
+        <Column
+          dataKey="index"
+          label="index"
+          width={100}
+          cellRenderer={cellRenderer}
+        />
+        <Column
+          dataKey="name"
+          label="name"
+          width={150}
+          flexGrow={1}
+          cellRenderer={cellRenderer}
+        />
+        <Column
+          dataKey="description"
+          label="description"
+          width={150}
+          flexGrow={1}
+          style={whiteSpace: 'normal'}
+          cellRenderer={cellRenderer}
+        />
+      </Table>
+    }
+    </InfiniteLoader>
   </div>
