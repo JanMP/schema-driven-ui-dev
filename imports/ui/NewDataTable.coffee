@@ -39,13 +39,12 @@ export default NewDataTable = ({rows, limit, totalRowCount, loadMoreRows}) ->
   forceUpdate = ->
     console.log 'forceUpdate'
     cache.clearAll()
-    tableRef?.current?.forceUpdateGrid()
+    tableRef?.current?.forceUpdateGrid?()
     return
 
   useEffect forceUpdate, [contentContainerWidth, contentContainerHeight]
 
   useEffect ->
-    start = new Date()
     length = rows?.length ? 0
     oldLength = oldRows?.current?.length ? 0
     if length > oldLength
@@ -53,7 +52,6 @@ export default NewDataTable = ({rows, limit, totalRowCount, loadMoreRows}) ->
     else
       forceUpdate() unless _.isEqual rows, oldRows?.current
     oldRows.current = rows
-    console.log (new Date()) - start
     return
   , [rows]
 

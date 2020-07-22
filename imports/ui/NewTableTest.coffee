@@ -7,10 +7,12 @@ import _ from 'lodash'
 resolve = ->
 reject = ->
 
+pageSize = 100
+
 export default NewTableTest = ->
 
   [skip, setSkip] = useState 0
-  [limit, setLimit] = useState 10
+  [limit, setLimit] = useState pageSize
 
   isLoading = useTracker ->
     handle = Meteor.subscribe 'testCollection', {skip, limit}
@@ -19,19 +21,23 @@ export default NewTableTest = ->
 
   rows = useTracker -> TestCollection.find({},{skip, limit, sort: index: 1}).fetch()
 
-  # useEffect ->
-  #   console.log rows
-  #   return
-  # , [rows]
+  useEffect ->
+    observer =
+      TestCollection
+      .find {},{skip, limit, sort: index: 1}
+      .observe
+        # addedAt: (args...) -> console.log 'addedAt', args...
+        changedAt: (args...) -> console.log 'changedAt', args...
+    -> observer.stop()
+  , [skip, limit]
 
   useEffect ->
-    console.log {isLoading}
-    if isLoading is false then resolve()
+    resolve() unless isLoading
   , [isLoading]
 
   loadMoreRows = ({startIndex, stopIndex}) ->
     if stopIndex >= limit
-      setLimit limit+10
+      setLimit limit+pageSize
     new Promise (res, rej) ->
       resolve = ->
         res()
