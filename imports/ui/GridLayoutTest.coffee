@@ -29,4 +29,7 @@ export default GridLayoutTest = ->
     <WindowContainer title="NewTableTest" noOverflow>
       <NewTableTest/>
     </WindowContainer>
+    <WindowContainer title="NewTableTest" noOverflow>
+      <NewTableTest/>
+    </WindowContainer>
   </WindowGrid>
