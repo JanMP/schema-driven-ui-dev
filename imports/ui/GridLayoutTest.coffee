@@ -11,25 +11,26 @@ import NewTableTest from './NewTableTest'
 
 export default GridLayoutTest = ->
   <WindowGrid name="TestGrid">
-    <WindowContainer title="AutoFormTest">
-      <AutoFormTest/>
-    </WindowContainer>
-    <WindowContainer title="AutoTableTest">
+    <WindowContainer title="AutoTableTest" noOverflow>
       <AutoTableTest/>
     </WindowContainer>
-    <WindowContainer title="QueryEditorTest">
-      <QueryEditorTest/>
-    </WindowContainer>
-    <WindowContainer title="QueryEditorTest2">
-      <QueryEditorTest/>
-    </WindowContainer>
-    <WindowContainer title="MarkDownEditorTest" noOverflow>
-      <MarkDownEditorTest/>
-    </WindowContainer>
-    <WindowContainer title="NewTableTest" noOverflow>
-      <NewTableTest/>
-    </WindowContainer>
-    <WindowContainer title="NewTableTest" noOverflow>
-      <NewTableTest/>
-    </WindowContainer>
   </WindowGrid>
+  #   <WindowContainer title="AutoFormTest">
+  #     <AutoFormTest/>
+  #   </WindowContainer>
+  #   <WindowContainer title="QueryEditorTest">
+  #     <QueryEditorTest/>
+  #   </WindowContainer>
+  #   <WindowContainer title="QueryEditorTest2">
+  #     <QueryEditorTest/>
+  #   </WindowContainer>
+  #   <WindowContainer title="MarkDownEditorTest" noOverflow>
+  #     <MarkDownEditorTest/>
+  #   </WindowContainer>
+  #   <WindowContainer title="NewTableTest" noOverflow>
+  #     <NewTableTest/>
+  #   </WindowContainer>
+  #   <WindowContainer title="NewTableTest" noOverflow>
+  #     <NewTableTest/>
+  #   </WindowContainer>
+  # </WindowGrid>
