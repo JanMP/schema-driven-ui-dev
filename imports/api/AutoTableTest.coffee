@@ -46,7 +46,9 @@ testSchema = new SimpleSchema
   alignment:
     type: String
     allowedValues: ['chaotic', 'neutral', 'lawful']
-  bool: Boolean
+  bool:
+    type: Boolean
+    optional: true
 
 listSchema = new SimpleSchema
   _id:
