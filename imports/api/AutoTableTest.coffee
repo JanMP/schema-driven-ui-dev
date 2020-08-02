@@ -4,7 +4,9 @@ import {ValidatedMethod} from 'meteor/mdg:validated-method'
 import SimpleSchema from 'simpl-schema'
 import {createAutoDataTableBackend} from 'meteor/janmp:schema-driven-ui'
 import TestComponent from '/imports/ui/parts/TestComponent'
-import TestButton from '/imports/ui/parts/TestButton'
+import TestInput from '/imports/ui/parts/TestInput'
+import TestInputField from '/imports/ui/parts/TestInputField'
+import TestSelect from '/imports/ui/parts/TestSelect'
 import _ from 'lodash'
 
 SimpleSchema.extendOptions ['AutoTable', 'uniforms']
@@ -58,26 +60,31 @@ listSchema = new SimpleSchema
   name: String
   a:
     type: Number
+    min: 5
     AutoTable:
       editable: true
       method: 'testList.setValue'
 
-  b: Number
+  b:
+    type: Number
+    AutoTable:
+      editable: true
+      method: 'testList.setValue'
   sum:
     type: Number
-    label: 'Summe von a und b'
+    label: 'a + b'
     AutoTable:
       component: TestComponent
       overflow: true
-  testButton:
-    type: Object
-    label: 'Test'
-    AutoTable:
-      component: TestButton
+  # testSelect:
+  #   type: Object
+  #   AutoTable:
+  #     component: TestSelect
   alignment:
     type: String
     allowedValues: ['chaotic', 'neutral', 'lawful']
     AutoTable:
+      # component: TestSelect
       editable: true
       overflow: true
       method: 'testList.setValue'
@@ -87,8 +94,13 @@ listSchema = new SimpleSchema
       editable: true
       method: 'testList.setValue'
 
+getPreSelectPipeline = -> [
+    $match:
+      a: $lt: 9
+      b: $lt: 100
+  ]
 
-pipeline = [
+getProcessorPipeline = -> [
   $project:
     _id: 1
     name: 1
@@ -109,7 +121,8 @@ export props = createAutoDataTableBackend
   collection: Test
   usePubSub: true
   useAggregation: true
-  pipelineMiddle: pipeline
+  # getPreSelectPipeline: getPreSelectPipeline
+  getProcessorPipeline: getProcessorPipeline
   canEdit: true
   canAdd: true
   canDelete: true
