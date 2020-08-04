@@ -24,18 +24,6 @@ if Meteor.isServer
         alignment: _.sample ['chaotic', 'neutral', 'lawful']
         bool: _.sample [true, false]
 
-new ValidatedMethod
-  name: 'testList.setValue'
-  validate:
-    new SimpleSchema
-      _id: String
-      modifier:
-        type: Object
-        blackbox: true
-    .validator()
-  run: ({_id, modifier}) ->
-    Test.update {_id}, $set: modifier
-
 
 testSchema = new SimpleSchema
   _id:
@@ -61,38 +49,28 @@ listSchema = new SimpleSchema
   a:
     type: Number
     min: 5
-    AutoTable:
-      editable: true
-      method: 'testList.setValue'
-
+    # AutoTable:
+    #   editable: true
   b:
     type: Number
-    AutoTable:
-      editable: true
-      method: 'testList.setValue'
+    # AutoTable:
+    #   editable: true
   sum:
     type: Number
     label: 'a + b'
     AutoTable:
       component: TestComponent
       overflow: true
-  # testSelect:
-  #   type: Object
-  #   AutoTable:
-  #     component: TestSelect
   alignment:
     type: String
     allowedValues: ['chaotic', 'neutral', 'lawful']
     AutoTable:
-      # component: TestSelect
       editable: true
       overflow: true
-      method: 'testList.setValue'
   bool:
     type: Boolean
-    AutoTable:
-      editable: true
-      method: 'testList.setValue'
+    # AutoTable:
+    #   editable: true
 
 getPreSelectPipeline = -> [
     $match:
