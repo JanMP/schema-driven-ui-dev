@@ -15,7 +15,7 @@ export Test = new Mongo.Collection 'test'
 
 if Meteor.isServer
   if Test.find().count() is 0
-    [1..100000]
+    [1..10000]
     .forEach (n) ->
       Test.insert
         a: _.random 1, 100
