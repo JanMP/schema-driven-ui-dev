@@ -60,13 +60,11 @@ listSchema = new SimpleSchema
     label: 'a + b'
     AutoTable:
       component: TestComponent
-      overflow: true
   alignment:
     type: String
     allowedValues: ['chaotic', 'neutral', 'lawful']
     AutoTable:
       editable: true
-      overflow: true
   bool:
     type: Boolean
     # AutoTable:
