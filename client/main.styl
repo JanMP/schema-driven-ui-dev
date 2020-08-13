@@ -1,3 +1,5 @@
+@import '{}/node_modules/react-virtualized/styles.css'
+
 body
   font-family: sans-serif
 
@@ -128,3 +130,53 @@ body
   border-left: 5px solid rgba(255, 255, 255, 0);
   border-right: 5px solid rgba(255, 255, 255, 0);
   cursor: col-resize;
+
+.ReactVirtualized__Table__row
+  align-items: stretch !important
+
+.ReactVirtualized__Grid__innerScrollContainer {
+  overflow: visible !important;
+}
+
+.ReactVirtualized__Table__row {
+  overflow: visible !important;
+}
+
+.ReactVirtualized__Table__rowColumn
+  overflow: hidden
+  &.overflow
+    overflow: visible !important
+
+// this is for the resizable Columns
+
+.ReactVirtualized__Table__headerColumn
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+  &:focus
+    outline: 0
+
+.ReactVirtualized__Table__headerTruncatedText
+  flex: auto;
+
+.DragHandle
+  flex: 0 0 16px;
+  z-index: 2;
+  cursor: col-resize;
+  color: #0085ff;
+
+.DragHandle:hover
+  background-color: rgba(0, 0, 0, 0.1);
+
+.DragHandleActive,
+.DragHandleActive:hover
+  color: #0b6fcc;
+  z-index: 3;
+
+.DragHandleIcon
+  flex: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
