@@ -65,6 +65,7 @@ listSchema = new SimpleSchema
     allowedValues: ['chaotic', 'neutral', 'lawful']
     AutoTable:
       editable: true
+      overflow: true
   bool:
     type: Boolean
     # AutoTable:
