@@ -17,6 +17,6 @@ export default TestSelect = ({row, columnKey, schema}) ->
       method: 'testList.setValue'
       data:
         _id: row?._id
-        modifier: a: _.toNumber value
+        changeData: a: _.toNumber value
 
   <Select onClick={onClick} onChange={onChange} value={row?.alignment} options={options}/>

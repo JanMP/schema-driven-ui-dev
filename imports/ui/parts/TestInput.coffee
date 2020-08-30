@@ -16,6 +16,6 @@ export default TestInput = ({row, columnKey, schema}) ->
       method: 'testList.setValue'
       data:
         _id: row?._id
-        modifier: "#{columnKey}": _.toNumber value
+        changeData: "#{columnKey}": _.toNumber value
 
   <Input onClick={onClick} onChange={onChange} value={row?[columnKey]}/>
