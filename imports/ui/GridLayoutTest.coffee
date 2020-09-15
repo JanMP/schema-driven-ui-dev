@@ -12,7 +12,7 @@ export default GridLayoutTest = ->
   <WindowGrid name="TestGrid">
     <WindowContainer title="AutoTableTest" noOverflow>
       <AutoTableTest/>
-    </WindowContainer> 
+    </WindowContainer>
     <WindowContainer title="AutoFormTest">
       <AutoFormTest/>
     </WindowContainer>
