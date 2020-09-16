@@ -9,7 +9,7 @@ schema = new SimpleSchema
   Alter: Number
   Hobbies: [String]
 
-new SimpleSchema2Bridge schema
+schemaBridge = new SimpleSchema2Bridge schema
 
 export default AutoFormTest = ->
   
@@ -17,7 +17,7 @@ export default AutoFormTest = ->
 
   <>
     <AutoForm
-      schema={schema}
+      schema={schemaBridge}
       model={model}
       onSubmit={setModel}
     />

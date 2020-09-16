@@ -10,11 +10,11 @@ import MarkDownEditorTest from './MarkDownEditorTest'
 
 export default GridLayoutTest = ->
   <WindowGrid name="TestGrid">
-    <WindowContainer title="AutoTableTest" noOverflow>
-      <AutoTableTest/>
-    </WindowContainer>
     <WindowContainer title="AutoFormTest">
       <AutoFormTest/>
+    </WindowContainer>
+    <WindowContainer title="AutoTableTest" noOverflow>
+      <AutoTableTest/>
     </WindowContainer>
     <WindowContainer title="QueryEditorTest">
       <QueryEditorTest/>
