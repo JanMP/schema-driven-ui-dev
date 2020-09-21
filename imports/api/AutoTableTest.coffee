@@ -25,10 +25,15 @@ if Meteor.isServer
         bool: _.sample [true, false]
 
 if Meteor.isServer
-  Meteor.publish 'pythonPublication', -> Test.find {pythonSum: $exists: false},
-    sort: b: 1
-    limit: 1
-  
+  Meteor.publish 'pythonPublication', ->
+    unless Meteor.user()?.username is 'pythonSum'
+      console.error 'user isnt pythonSum???'
+      @ready()
+    else
+      Test.find {pythonSum: $exists: false},
+        sort: b: 1
+        limit: 1
+    
 new ValidatedMethod
   name: 'setPythonSum'
   validate:
