@@ -16,7 +16,11 @@ schema = new SimpleSchema
   Select:
     type: String
     allowedValues: ['Option 1', 'Option 2', 'fnord']
-  Array: [String]
+  Array: Array
+  'Array.$': Object
+  'Array.$.String': String
+  'Array.$.Number': Number
+
 
 schemaBridge = new SimpleSchema2Bridge schema
 
