@@ -178,26 +178,17 @@ body
   flex: auto;
 
 .DragHandle
-  flex: 0 0 16px;
+  width: 8px
   z-index: 2;
   cursor: col-resize;
-  color: #0085ff;
-
-.DragHandle:hover
-  background-color: rgba(0, 0, 0, 0.1);
+  border-right: 2px dotted grey
 
 .DragHandleActive,
 .DragHandleActive:hover
-  color: #0b6fcc;
-  z-index: 3;
+  color: black
+  z-index: 3
 
-.DragHandleIcon
-  flex: 0 0 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
 // fix sizing of dropdowns in tables
 .ui.selection.dropdown
-  min-width: 100%
+  min-width: 4em !important
