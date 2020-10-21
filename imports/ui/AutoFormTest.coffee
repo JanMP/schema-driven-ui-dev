@@ -1,8 +1,16 @@
 import React, {useState} from 'react'
 import SimpleSchema from 'simpl-schema'
-import {AutoForm} from 'meteor/janmp:schema-driven-ui'
+import {AutoForm, QueryEditorField} from 'meteor/janmp:schema-driven-ui'
 import {Container, Segment} from 'semantic-ui-react'
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2'
+
+querySchema = new SimpleSchema
+  a: String
+  b: Number
+  c: Array
+  'c.$': Object
+  'c.$.x': Number
+  'c.$.y': Number
 
 schema = new SimpleSchema
   String: String
@@ -20,6 +28,13 @@ schema = new SimpleSchema
   'Array.$': Object
   'Array.$.String': String
   'Array.$.Number': Number
+  Query:
+    type: Object
+    blackbox: true
+    uniforms:
+      component: QueryEditorField
+      schema: querySchema
+      path: ''
 
 
 schemaBridge = new SimpleSchema2Bridge schema
