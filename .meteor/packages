@@ -9,10 +9,10 @@ mobile-experience@1.1.0       # Packages for a great mobile UX
 mongo@1.10.0                   # The database Meteor supports right now
 reactive-var@1.0.11            # Reactive variable for tracker
 
-standard-minifier-css@1.6.1   # CSS minifier run for production mode
+standard-minifier-css@1.7.0-beta200.2   # CSS minifier run for production mode
 standard-minifier-js@2.6.0    # JS minifier run for production mode
 es5-shim@4.8.0                # ECMAScript 5 compatibility for older browsers
-ecmascript@0.14.3              # Enable ECMAScript2015+ syntax in app code
+ecmascript@0.15.0-beta200.2              # Enable ECMAScript2015+ syntax in app code
 typescript@3.7.6              # Enable TypeScript syntax in .ts and .tsx modules
 shell-server@0.5.0            # Server-side component of the `meteor shell` command
 
@@ -25,5 +25,6 @@ accounts-base@1.7.0
 coagmano:stylus
 insecure@1.0.7
 peerlibrary:reactive-publish
-dynamic-import@0.5.2
+dynamic-import@0.5.3
 underscore@1.0.10
+hot-module-replacement
