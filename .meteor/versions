@@ -40,7 +40,7 @@ htmljs@1.0.11
 id-map@1.1.0
 insecure@1.0.7
 inter-process-messaging@0.1.1
-janmp:schema-driven-ui@0.5.3
+janmp:schema-driven-ui@0.5.6
 launch-screen@1.2.0
 livedata@1.0.18
 localstorage@1.2.0
