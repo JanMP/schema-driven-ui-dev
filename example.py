@@ -55,7 +55,7 @@ client.on('changed', changed)
 
 
 client.connect()
-client.login('pythonSum', 'geHeim123'.encode())
+client.login('pythonSum', 'Secret1234'.encode())
 client.subscribe('pythonPublication')
 
 
