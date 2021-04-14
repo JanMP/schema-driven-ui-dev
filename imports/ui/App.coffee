@@ -1,8 +1,7 @@
 import React from 'react'
-import {fnord} from 'meteor/janmp:schema-driven-ui'
+import {AppRouter} from 'meteor/janmp:schema-driven-ui'
+import menuDefinitions from './menuDefinitions'
+import TestMenuItem from './TestMenuItem'
 
 export App = ->
-  <div>
-    <h1>Welcome to Meteor!</h1>
-    <p>{fnord}</p>
-  </div>
+  <AppRouter menuDefinitions={menuDefinitions} rightMenuItems={TestMenuItem}/>

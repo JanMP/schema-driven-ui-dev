@@ -1,0 +1,194 @@
+
+// .desktop-conainer
+//   display: flex
+//   flex-direction: column
+//   height: 100vh
+//   max-height: 100vh
+
+//   .content-container
+//     padding: 1rem
+//     flex: 1 1
+
+.footer-container
+  display: none
+  text-align: center
+
+body
+  background-color: #ECF3F9 !important
+
+.drop-zone
+  padding: .25rem 0
+
+.form.ui.inline
+  .field
+    margin-right: 1rem
+
+.file-drop-zone
+  padding: 2rem
+  height: 5rem
+  margin: 1rem 0
+  text-align: center
+  background-color: #eee
+  border-radius: .5rem
+  box-shadow: inset 3px 3px 5px silver
+
+.Toastify__toast--default {
+  background: #fff;
+  color: #aaa; }
+.Toastify__toast--info {
+  background: #3498db; }
+.Toastify__toast--success {
+  background: #97C266; }
+.Toastify__toast--warning {
+  background: #f1c40f; }
+.Toastify__toast--error {
+  background: #DB2828; }
+
+.formatter-help
+  background-color: lightblue
+
+.path-help
+  background-color: pink
+
+.query-editor
+  .query-block
+    padding: 4px 0 0 4px
+    margin-bottom: 4px
+    border-radius: 2px
+    .inline
+      margin-bottom: -12px
+    .block-header
+      padding: 4px
+      margin: -4px 0 4px -4px
+      border-radius: 0 2px 2px 0
+    &.and
+      border-left: 12px solid #FFDB9B !important
+      >.block-header
+        background-color: #FFDB9B
+    &.or
+      border-left: 12px solid #D5E7C2 !important
+      >.block-header
+        background-color: #D5E7C2
+    &.nor
+      border-left: 12px solid #F3B9B9 !important
+      >.block-header
+        background-color: #F3B9B9
+    &.folder
+      border: 8px solid #E5EDF1
+      background-color: #E5EDF1
+      border-top 0
+      >.block-header
+        margin-right: -4px
+        background-color: #E5EDF1
+
+.window
+  background-color: white
+  border-radius: 2px
+  height: 100%
+  overflow: hidden
+  box-shadow: 0 1px 5px 0 rgba(2, 27, 160, 0.15)
+  .window-header
+    width: 100%
+    font-size: 1.3rem
+    font-weight: bolder
+    padding: .8rem 1rem
+    border-radius 2px 2px 0 0
+    box-shadow: 0 0 2px 1px rgba(2, 27, 160, 0.08)
+  .window-content
+    margin-top: 2px
+    padding: 1rem
+    overflow: auto
+    height: calc(100% - 41px)
+  &.no-overflow
+    .window-content
+      padding: 0
+      overflow: hidden
+
+// split windows
+.Resizer {
+  background: #000;
+  opacity: 0.2;
+  z-index: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+ 
+.Resizer:hover {
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+ 
+.Resizer.horizontal {
+  height: 11px;
+  margin: -5px 0;
+  border-top: 5px solid rgba(255, 255, 255, 0);
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  cursor: row-resize;
+  width: 100%;
+}
+ 
+.Resizer.horizontal:hover {
+  border-top: 5px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+}
+ 
+.Resizer.vertical
+  width: 11px;
+  margin: 0 -5px;
+  border-left: 5px solid rgba(255, 255, 255, 0);
+  border-right: 5px solid rgba(255, 255, 255, 0);
+  cursor: col-resize;
+
+.fall-dokumentation
+  padding: 1rem
+
+.ReactVirtualized__Table__row
+  align-items: stretch !important
+
+.ReactVirtualized__Grid__innerScrollContainer {
+  overflow: visible !important;
+}
+
+.ReactVirtualized__Table__row
+  overflow: visible !important;
+  &.even
+    background-color: #eee
+
+.ReactVirtualized__Table__rowColumn
+  overflow: hidden
+  &.overflow
+    overflow: visible !important
+
+
+// resizable Header Columns
+
+.ReactVirtualized__Table__headerColumn
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+  &:focus
+    outline: 0
+
+.ReactVirtualized__Table__headerTruncatedText
+  flex: auto;
+
+.DragHandle
+  width: 8px
+  z-index: 2;
+  cursor: col-resize;
+  border-right: 2px dotted grey
+
+.DragHandleActive,
+.DragHandleActive:hover
+  color: black
+  z-index: 3
+
+
+// fix sizing of dropdowns in tables
+.ui.selection.dropdown
+  min-width: 4em !important
